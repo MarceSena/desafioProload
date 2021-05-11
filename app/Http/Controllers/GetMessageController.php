@@ -25,15 +25,11 @@ class GetMessageController extends Controller
             $post .= '<h1>'.$item->title.'</h1>'; 
             $post .= '<a href"'.$item->link.'</a>';
             $post .= '<p>'.$item->description.'<p>';
-            $post .= '<h4>'.$item->copyright.'<h4>';
+            $post .= '<h3>'.$item->copyright.'<h3>';
         }
         
-       
 
        dd($post);
-
-     
-
        
     }
 
