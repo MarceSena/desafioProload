@@ -2,36 +2,55 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Message;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use GuzzleHttp\Client;
 
 class GetMessageController extends Controller
-{
-    public function message()
-    {   
-        //https://admininfo.info/utilizar-fuentes-rss-con-laravel
-        //$response = Http::get('https://api.github.com/users/binascohub/repos');
-        $url ='https://g1.globo.com/rss/g1/';
-        $header = get_headers($url);
-        $response  = substr($header[0],9,3);
-        if($response == '404'){
-            return 'Network Error';
-        }
-        $data = simplexml_load_string(file_get_contents($url));
-        $post = '';
-        foreach($data->channel->item as $item){
-    
-            $post .= '<h1>'.$item->title.'</h1>'; 
-            $post .= '<a href"'.$item->link.'</a>';
-            $post .= '<p>'.$item->description.'<p>';
-            $post .= '<h3>'.$item->copyright.'<h3>';
-        }
-        
+{       
+        //https://laravel.com/docs/8.x/http-client
+        //https://laravel.com/docs/5.8/api-authentication#passing-tokens-in-requests
+       public  function conectAPI(){
+            $client = new Client();
+            $url = "https:/zapito.com.br/api/bots";
+            $token= 'RMMYWnAG7cxUmHYncqb727nYl8PBNUYdVvPc6YdOzmIue8tTDsYqoj1xWhF0';
 
-       dd($post);
-       
-    }
+            $response = $client->request('GET', $url, [
+                'headers' => [
+                    'Authorization' => 'Bearer '.$token,
+                    'Accept' => 'application/json',
+                ],
+                
+            ]);
+           
+        
+            $responseBody = json_decode($response->getBody());
+
+            dd( $responseBody);
+
+       }
+       public function newMessage(Request $request){
+        //https://laravel.com/docs/8.x/http-client
+        
+        $token= 'RMMYWnAG7cxUmHYncqb727nYl8PBNUYdVvPc6YdOzmIue8tTDsYqoj1xWhF0';
+        $url = "https:/zapito.com.br/api/message";
+
+        $request = Http::withToken($token)->post($url, [
+                    "phone" => "11900000000",
+                    "message" => "Mensagem de teste 1",
+                    "test_mode" => true
+                ]);
+               
+            $ui = $request->url();
+               
+            dd( $ui);
+           
+           
+            
+           
+       }
+    
 
     
 }

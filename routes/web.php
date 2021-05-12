@@ -17,6 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/message', 'App\Http\Controllers\GetMessageController@message');
+Route::get('/news', 'App\Http\Controllers\NewsController@getNews');
+Route::get('/api', 'App\Http\Controllers\GetMessageController@conectAPI');
+Route::get('/api/message', 'App\Http\Controllers\GetMessageController@newMessage');
 
 
