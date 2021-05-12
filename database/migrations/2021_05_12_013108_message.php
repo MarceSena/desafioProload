@@ -18,7 +18,7 @@ class Message extends Migration
             $table->foreignId('user_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->string('title');
             $table->string('link');
-            $table->string('status');
+            $table->string('status')->default(0);  
             $table->rememberToken();
             $table->timestamps();
         });

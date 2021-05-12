@@ -17,7 +17,7 @@ class CreateReceiversTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('tel');
-            $table->boolean('active');
+            $table->boolean('active')->default(0);
             $table->rememberToken();
             $table->timestamps();
         });
