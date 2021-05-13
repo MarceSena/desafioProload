@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Broadcast;
-
+namespace App\Broadcasting\Channels\Message\WhatsAppMessage;
+namespace App\Broadcasting\Channels\Message\WhatsAppChannel;
 /*
 |--------------------------------------------------------------------------
 | Broadcast Channels
@@ -16,3 +17,5 @@ use Illuminate\Support\Facades\Broadcast;
 Broadcast::channel('App.Models.User.{id}', function ($user, $id) {
     return (int) $user->id === (int) $id;
 });
+
+Broadcast::channel('messages.{message}', WhatsAppMessage::class);

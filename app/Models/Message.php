@@ -9,4 +9,10 @@ class Message extends Model
 {   
     
     protected $table='messages';
+
+
+    public function routeNotificationForWhatsApp()
+    {
+        return $this->tel;
+    }
 }

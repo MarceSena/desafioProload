@@ -30,4 +30,9 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'zapito' => [
+        'url' => env('URL_ZAPITO'),
+        'token' => env('ZAPITO_HEADER_TOKEN'),
+      ],
+
 ];
