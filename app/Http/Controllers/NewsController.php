@@ -26,6 +26,6 @@ class NewsController extends Controller
             $post .= '<h3>'.$item->copyright.'<h3>';
         }
       
-        dd($post);
+        return $post ;
     }
 }
