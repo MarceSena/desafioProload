@@ -19,8 +19,15 @@ Route::get('/', function () {
 
 Route::get('/news/store', 'App\Http\Controllers\NewsController@store');
 Route::get('/news/index', 'App\Http\Controllers\NewsController@index');
-Route::get('/news', 'App\Http\Controllers\NewsController@getNews');
-Route::get('/api', 'App\Http\Controllers\GetMessageController@conectAPI');
+//Route::get('/news', 'App\Http\Controllers\NewsController@getNews');
+
+Route::get('/message/store', 'App\Http\Controllers\NewsController@store');
+Route::get('/message/index', 'App\Http\Controllers\NewsController@index');
 Route::get('/message/send', 'App\Http\Controllers\MessageController@sendMessage');
+
+Route::get('/test', 'App\Http\Controllers\MessageController@message');
+
+Route::get('/api', 'App\Http\Controllers\GetMessageController@conectAPI');
+
 
 

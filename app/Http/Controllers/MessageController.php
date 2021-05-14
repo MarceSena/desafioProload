@@ -4,43 +4,47 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
-use NewsController;
+use App\Models\Message;
+use App\Models\News;
+use App\Models\Client;
+use Illuminate\Support\Facades\DB;
+
 
 
 class MessageController extends Controller
 {
-    
+    //pegar dados
     
     //https://www.treinaweb.com.br/blog/conhecendo-os-recursos-de-serializacao-json-do-laravel/
-    public function messages ()
+    public function message()
     {
-        $title  =  NewsController::getNews();
+   
+    $news = DB::table('news')->get();
+    $client = DB::table('clients')->get();
 
 
-        $json= [
-            "test_mode" => true,
-            "data" => [
-                    
-                    [
-                        "phone" => "92992353995",
-                        "message"=> $title,
-                        "bot_id"=> 8454, //8455
-                        "file"=> [
-                        "url"=> "https://via.placeholder.com/400",
-                        "name"=> "arquivo_exemplo.png",
-                        "headers"=> [
-                        "X-Custom-Header"=> "valor_custom_header",
-                    ],
-                  "optional"=> false,
-                ],
-                "meta"=> "Opcional - Não utilizado pelo Zapito"
-            ]
-        ]
-            
-    ];
-       // $json::all();
-        return $json;
+    foreach ($client as $clientonsult) {
+        foreach ($news as $newsConsult) {
+            $newMessage = [
+                "test_mode" => true,
+                "data" => [
+                        
+                        [
+                            "phone" => $clientonsult->phone,
+                            "message"=> "ola { $clientonsult->name} \n essa noticia parece importante para voce: {$newsConsult->title} \n segue o link {$newsConsult->link}",
+                            "bot_id"=> $id_bot , //8455
+                        ]
+                ]
+                
+            ];
+
+        }
+    
+        return $newMessage;
     }
+       
+}
+   
 
 
     //https://laravel.com/docs/5.8/api-authentication#passing-tokens-in-requests
@@ -62,5 +66,6 @@ class MessageController extends Controller
         echo $response->getBody();
 
     }
+
 
 }

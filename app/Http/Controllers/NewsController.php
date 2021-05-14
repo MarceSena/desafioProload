@@ -39,15 +39,7 @@ class NewsController extends Controller
     public function store(Request $request)
     {
         // Validate the request... 
-        $validator = Validator::make($request->all(), [
-            'title' => 'required|unique:posts|max:255',
-           
-        ]);
         
-        if ($validator->fails()) {
-            return 'this news already exists';
-        }
-
         $arrayNews = $this->getNews();
         $title = Arr::get($arrayNews, 'title');
         $link = Arr::get($arrayNews, 'link');

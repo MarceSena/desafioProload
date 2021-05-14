@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateReceiversTable extends Migration
+class Client extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,19 @@ class CreateReceiversTable extends Migration
      */
     public function up()
     {
-        Schema::create('receivers', function (Blueprint $table) {
+       
+        //simplificar pra teste
+       
+        Schema::create('clients', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('tel');
-            $table->boolean('active')->default(0);
+            $table->string('phone');
+            $table->boolean('status')->default(0);
             $table->rememberToken();
             $table->timestamps();
         });
+       
+       
     }
 
     /**
@@ -30,6 +35,6 @@ class CreateReceiversTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('receivers');
+        Schema::dropIfExists('client');
     }
 }
