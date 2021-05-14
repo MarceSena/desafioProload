@@ -18,4 +18,5 @@ Route::group([
     Route::post('/message', 'MessageController@newMessage');
    
 
+    Route::crud('client', 'ClientCrudController');
 }); // this should be the absolute last line of this file

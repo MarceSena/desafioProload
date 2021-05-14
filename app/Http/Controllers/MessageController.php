@@ -13,16 +13,14 @@ use Illuminate\Support\Facades\DB;
 
 class MessageController extends Controller
 {
-    //pegar dados
+    
     
     //https://www.treinaweb.com.br/blog/conhecendo-os-recursos-de-serializacao-json-do-laravel/
     public function message()
     {
-   
     $news = DB::table('news')->get();
     $client = DB::table('clients')->get();
-
-
+    $count = 0;
     foreach ($client as $clientonsult) {
         foreach ($news as $newsConsult) {
             $newMessage = [
@@ -31,41 +29,27 @@ class MessageController extends Controller
                         
                         [
                             "phone" => $clientonsult->phone,
-                            "message"=> "ola { $clientonsult->name} \n essa noticia parece importante para voce: {$newsConsult->title} \n segue o link {$newsConsult->link}",
-                            "bot_id"=> $id_bot , //8455
+                            "message"=> "Ola {$clientonsult->name} \n Essa noticia parece importante para voce: \n {$newsConsult->title} \n segue o link {$newsConsult->link}",
+                            "bot_id"=> 8455 , //8455
                         ]
                 ]
                 
-            ];
-
+            ];    
         }
-    
-        return $newMessage;
-    }
-       
-}
-   
-
-
-    //https://laravel.com/docs/5.8/api-authentication#passing-tokens-in-requests
-    public function sendMessage( ){
-              
-        $newMessage = $this->messages();
-    
+        
         $token = config ('services.zapito.token');
         $url =config('services.zapito.url');
-       
-       
+        
         $response = Http::withHeaders([
             'Accept' => 'application/json',
             'Authorization' => 'Bearer '.$token,
         ])->post($url ,$newMessage);
-        
-    
-        echo $response->getStatusCode();
-        echo $response->getBody();
+       
+    }return $response;
+       
+}
+   
 
-    }
 
 
 }

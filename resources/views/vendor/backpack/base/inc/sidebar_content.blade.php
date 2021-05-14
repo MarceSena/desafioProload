@@ -5,3 +5,5 @@
     @csrf
     <button type="submit" class="btn btn-primary">Place Order</button>
 </form>
+
+<li class='nav-item'><a class='nav-link' href='{{ backpack_url('client') }}'><i class='nav-icon la la-question'></i> Clients</a></li>
