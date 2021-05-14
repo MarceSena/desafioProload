@@ -2,10 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
+use App\Models\News;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Validator;
+
+
 
 class NewsController extends Controller
 {
+    
     public function getNews()
     {   
         //https://admininfo.info/utilizar-fuentes-rss-con-laravel
@@ -16,16 +24,47 @@ class NewsController extends Controller
         if($response == '404'){
             return 'Network Error';
         }
-        $data = simplexml_load_string(file_get_contents($url));
-        $post = '';
-        foreach($data->channel->item as $item){
-    
-            $post .= '<h1>'.$item->title.'</h1>'; 
-            $post .= '<a href"'.$item->link.'</a>';
-            $post .= '<p>'.$item->description.'<p>';
-            $post .= '<h3>'.$item->copyright.'<h3>';
-        }
-      
-        return $post ;
+        $data = simplexml_load_string(file_get_contents($url));       
+        
+         
+        $arrayNews = [
+            'title' => $data->channel->item->title,
+            'link' => $data->channel->item->link   
+         ];
+
+         return $arrayNews;
+        //$objeto->channel->item->title  
     }
+    
+    public function store(Request $request)
+    {
+        // Validate the request... 
+        $validator = Validator::make($request->all(), [
+            'title' => 'required|unique:posts|max:255',
+           
+        ]);
+        
+        if ($validator->fails()) {
+            return 'this news already exists';
+        }
+
+        $arrayNews = $this->getNews();
+        $title = Arr::get($arrayNews, 'title');
+        $link = Arr::get($arrayNews, 'link');
+        
+        $news = new News;
+        $news = News::create([
+                'title' =>  $title,
+                'link' =>  $link ,
+            ]);
+        
+       
+        $news->save();
+
+          
+        return 'saved news successfully';
+        
+    }
+    
+   
 }

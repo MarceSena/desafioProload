@@ -17,7 +17,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/news/store', 'App\Http\Controllers\NewsController@store');
+Route::get('/news/index', 'App\Http\Controllers\NewsController@index');
 Route::get('/news', 'App\Http\Controllers\NewsController@getNews');
 Route::get('/api', 'App\Http\Controllers\GetMessageController@conectAPI');
 Route::get('/message/send', 'App\Http\Controllers\MessageController@sendMessage');
+
 

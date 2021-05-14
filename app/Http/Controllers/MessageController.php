@@ -4,28 +4,26 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
-use GuzzleHttp\Client;
-use MessageControler\message;
+use NewsController;
+
 
 class MessageController extends Controller
 {
     
     
-    
     //https://www.treinaweb.com.br/blog/conhecendo-os-recursos-de-serializacao-json-do-laravel/
-    function messages ()
+    public function messages ()
     {
+        $title  =  NewsController::getNews();
+
+
         $json= [
             "test_mode" => true,
             "data" => [
+                    
                     [
                         "phone" => "92992353995",
-                        "message" => "Mensagem de teste 1",
-                        "test_mode"=> true
-                    ],
-                    [
-                        "phone" => "92992353995",
-                        "message"=> "Olá mundo!\n *Negrito* _itálico_ e EMOJIs: 🤖",
+                        "message"=> $title,
                         "bot_id"=> 8454, //8455
                         "file"=> [
                         "url"=> "https://via.placeholder.com/400",
@@ -49,19 +47,17 @@ class MessageController extends Controller
     public function sendMessage( ){
               
         $newMessage = $this->messages();
-       
-
+    
         $token = config ('services.zapito.token');
         $url =config('services.zapito.url');
        
        
-
         $response = Http::withHeaders([
             'Accept' => 'application/json',
             'Authorization' => 'Bearer '.$token,
         ])->post($url ,$newMessage);
         
-        
+    
         echo $response->getStatusCode();
         echo $response->getBody();
 
