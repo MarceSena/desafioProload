@@ -13,10 +13,9 @@ Route::group([
         (array) config('backpack.base.middleware_key', 'admin')
     ),
     'namespace'  => 'App\Http\Controllers\Admin',
-], function () { // custom admin routes
-    Route::crud('receiver', 'ReceiverCrudController');
-    Route::post('/message', 'MessageController@newMessage');
-   
+], function () { // custom admin routes   
 
-    Route::crud('client', 'ClientCrudController');
+    Route::crud('client', 'ClientCrudController',['names' => [
+                'index' => 'client.client',
+    ]]);
 }); // this should be the absolute last line of this file

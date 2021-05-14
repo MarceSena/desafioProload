@@ -17,15 +17,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/news/store', 'App\Http\Controllers\NewsController@store');
-Route::get('/news/index', 'App\Http\Controllers\NewsController@index');
+Route::get('/news/get', 'App\Http\Controllers\NewsController@store')->name('news.get');
 //Route::get('/news', 'App\Http\Controllers\NewsController@getNews');
 
 Route::get('/message/store', 'App\Http\Controllers\NewsController@store');
 Route::get('/message/index', 'App\Http\Controllers\NewsController@index');
-Route::get('/message/send', 'App\Http\Controllers\MessageController@sendMessage');
 
-Route::get('/test', 'App\Http\Controllers\MessageController@message');
+Route::get('/message/send', 'App\Http\Controllers\MessageController@message')->name('message.send');
 
 Route::get('/api', 'App\Http\Controllers\GetMessageController@conectAPI');
 

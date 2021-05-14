@@ -30,7 +30,7 @@ class MessageController extends Controller
                         [
                             "phone" => $clientonsult->phone,
                             "message"=> "Ola {$clientonsult->name} \n Essa noticia parece importante para voce: \n {$newsConsult->title} \n segue o link {$newsConsult->link}",
-                            "bot_id"=> 8455 , //8455
+                            "bot_id"=> 42 , //8455
                         ]
                 ]
                 
@@ -45,10 +45,13 @@ class MessageController extends Controller
             'Authorization' => 'Bearer '.$token,
         ])->post($url ,$newMessage);
        
-    }return $response;
+    }
+    
+    return redirect()->route('client.index')
+        ->with('success', 'News saved successfully');
        
 }
-   
+      
 
 
 
