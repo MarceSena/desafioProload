@@ -14,7 +14,11 @@ Route::group([
     ),
     'namespace'  => 'App\Http\Controllers\Admin',
 ], function () { // custom admin routes   
-
+    
+    Route::get('/', function () {
+        return   redirect()->route('client.index');
+    });
+    
     Route::crud('client', 'ClientCrudController',['names' => [
                 'index' => 'client.client',
     ]]);

@@ -13,19 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
+Route::get('/', function(){
+    return redirect()->route('client.index');
+});
+    
 Route::get('/news/get', 'App\Http\Controllers\NewsController@store')->name('news.get');
 //Route::get('/news', 'App\Http\Controllers\NewsController@getNews');
 
-Route::get('/message/store', 'App\Http\Controllers\NewsController@store');
-Route::get('/message/index', 'App\Http\Controllers\NewsController@index');
-
 Route::get('/message/send', 'App\Http\Controllers\MessageController@message')->name('message.send');
 
-Route::get('/api', 'App\Http\Controllers\GetMessageController@conectAPI');
 
 
 

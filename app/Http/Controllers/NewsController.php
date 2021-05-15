@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Validator;
 class NewsController extends Controller
 {
     
+
     public function getNews()
     {   
         //https://admininfo.info/utilizar-fuentes-rss-con-laravel
