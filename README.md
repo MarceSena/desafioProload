@@ -24,3 +24,9 @@ run the command on your terminal
   alias sail = 'bash vendor / bin / sail
 ``
 read the doc "https://laravel.com/docs/8.x/sail";
+
+## Note
+The system uses scheduling, to get messages from G1, at 1 minute intervals.
+
+Run the command php artisan schedule: work, to get the data automatically.
+In your browser, put the url http: //localhost/ Create your registration and access.
