@@ -28,5 +28,6 @@ read the doc "https://laravel.com/docs/8.x/sail";
 ## Note
 The system uses scheduling, to get messages from G1, at 1 minute intervals.
 
-Run the command php artisan schedule: work, to get the data automatically.
+Run the command ``shell sail php artisan schedule: work``, to get the data automatically.
+Run the command ``shell sail php artisan get:news``, make an interaction
 In your browser, put the url http: //localhost/ Create your registration and access.
