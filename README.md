@@ -19,7 +19,7 @@ Generate your token in Zapito.
 
 Run the command ``php artisan key:generate ``, to generate a new key for the project, which can be seen in .env.
 
-At the end of the previously done process, `` run docker-compose up`` command and wait for it to finish;
+At the end of the previously done process, run `` docker-compose up`` command and wait for it to finish;
 
 To place the tables in the database, run the `` php artisan migrate``;
 
