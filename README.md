@@ -16,6 +16,6 @@ Run the command php artisan key: generate, to generate a new key for the project
 ## Note
 The system uses scheduling, to get messages from G1, at 1 minute intervals.
 
-Run the command ``shell sail php artisan schedule: work``, to get the data automatically.
-Run the command ``shell sail php artisan get:news``, make an interaction
+Run the command ``shell sail artisan schedule: work``, to get the data automatically.
+Run the command ``shell sail artisan get:news``, make an interaction
 In your browser, put the url http: //localhost/ Create your registration and access.
