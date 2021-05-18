@@ -12,7 +12,7 @@ Have ``Composer``, ``PHP`` and ``Docker`` installed on your machine;
 
 apois run the command on your ``composer install`` terminal, to install all project dependencies;
 
-At the root of the project create a new file called `` .env`` and compile the data from `` .env-exampleple``. Change the environment variables if necessary, and URL_ZAPITO end ZAPITO_HEADER_TOKEN (mandatory).
+At the root of the project create a new file called `` .env`` and copy the data from `` .env-example``. Change the environment variables if necessary, and URL_ZAPITO end ZAPITO_HEADER_TOKEN (mandatory).
 
 Generate your token in Zapito.
 
