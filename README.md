@@ -8,22 +8,10 @@ Clone the Project;
 ``shell
 git clone https://github.com/MarceSena/desafioProload.git``
 
-At the root of the project create a new file called .env and compile the data from .env-exampleple. Change the environment variables if necessary, and TOKEN_ZAPITO (mandatory). Generate your token in Zapito;
-
-Have your Docker machine installed;
-
-run the command on your terminal
-
-``shell
-  composer require laravel / sail --dev``
-run the command on your terminal
-``shell
-  ./vendor/bin/sail up -d``
-run the command on your terminal
-``shell
-  alias sail = 'bash vendor / bin / sail
-``
-read the doc "https://laravel.com/docs/8.x/sail";
+Have Composer, PHP and Docker installed on your machine;
+At the end, execute the command in your composer install terminal, to install all project dependencies;
+At the root of the project create a new file called .env and compile the data from .env-exampleple. Change the environment variables if necessary, and TOKEN_ZAPITO (mandatory). Generate your token in Zapito.
+Run the command php artisan key: generate, to generate a new key for the project, which can be seen in .env.
 
 ## Note
 The system uses scheduling, to get messages from G1, at 1 minute intervals.
