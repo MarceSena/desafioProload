@@ -5,8 +5,7 @@ Create a system that fetches news from an RSS feed and uses the Zapito API to se
 ## Installing / Getting Started
 
 Clone the Project;
-``shell
-git clone https://github.com/MarceSena/desafioProload.git``
+``git clone https://github.com/MarceSena/desafioProload.git``
 
 Clone the Project;
 Have ``Composer``, ``PHP`` and ``Docker`` installed on your machine;
